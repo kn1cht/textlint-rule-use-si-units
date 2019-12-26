@@ -31,5 +31,10 @@
     "url": "https://github.com/kn1cht/textlint-rule-use-si-units/issues"
   },
   "homepage": "https://github.com/kn1cht/textlint-rule-use-si-units#readme",
-  "description": ""
+  "description": "Textlint rule to always use International System of Units (SI).",
+  "dependencies": {
+    "match-index": "^1.0.3",
+    "parsimmon": "^1.13.0",
+    "textlint-rule-helper": "^2.1.1"
+  }
 }
