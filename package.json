@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "keywords": [
+    "textlintrule"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "src/"
+  ],
+  "scripts": {
+    "test": "textlint-scripts test",
+    "build": "textlint-scripts build",
+    "prepublish": "npm run --if-present build"
+  },
+  "devDependencies": {
+    "textlint-scripts": "^3.0.0",
+    "textlint-tester": "^5.1.11"
+  },
+  "name": "textlint-rule-use-si-units",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kn1cht/textlint-rule-use-si-units.git"
+  },
+  "author": "kn1cht <16277200+kn1cht@users.noreply.github.com> (https://scrapbox.io/kn1cht)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kn1cht/textlint-rule-use-si-units/issues"
+  },
+  "homepage": "https://github.com/kn1cht/textlint-rule-use-si-units#readme",
+  "description": ""
+}
