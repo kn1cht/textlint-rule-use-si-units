@@ -34,3 +34,42 @@ tester.run('use-si-units', rule, {
         },
     ]
 });
+
+tester.run('use-si-units with options',
+{
+    rules : [{
+        ruleId : 'use-si-units with options',
+        rule,
+        options : {
+            allowedUnits: ['Å'],
+            restrictNonSIUnits: true,
+        }
+    }]
+},{
+    valid: [
+        'はじめくんは1 Å離れた学校に向かいます。',
+        '点Pが10000 Å/sで移動する。'
+    ],
+    invalid: [
+        {
+            text: '2 d 5 h 0 min 1 s',
+            errors: [
+                {
+                    message: '「d」には、SI単位系で使用できない文字が含まれています。SI単位系を使用してください。',
+                    line: 1,
+                    column: 3
+                },
+                {
+                    message: '「h」には、SI単位系で使用できない文字が含まれています。SI単位系を使用してください。',
+                    line: 1,
+                    column: 7
+                },
+                {
+                    message: '「min」には、SI単位系で使用できない文字が含まれています。SI単位系を使用してください。',
+                    line: 1,
+                    column: 11
+                }
+            ]
+        }
+    ]
+});

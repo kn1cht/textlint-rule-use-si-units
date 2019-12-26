@@ -1,4 +1,4 @@
-# textlint-rule-use-si-units
+# textlint-rule-use-si-units [![](https://github.com/kn1cht/textlint-rule-use-si-units/workflows/CI/badge.svg)](https://github.com/kn1cht/textlint-rule-use-si-units/actions?query=workflow%3ACI)
 ## Use SI Units
 1. SI単位系の単位以外の使用を禁止します
     - SI単位系は度々改訂されているため、[The International System of Units(SI) 9th edition 2019](https://www.bipm.org/utils/common/pdf/si-brochure/SI-Brochure-9.pdf#page=147)を本ルールの基準とします
@@ -27,7 +27,7 @@
     - e.g.「2.56 m/s」「1.1e-10 m」
     - ただし、小数点・記号より後にも数字があればその部分を検出します
 - LaTeX等で数値と単位の間に半角スペース以外を使用しているもの
-    - e.g.「10\,m」「\SI{123}{kgm^2/s^3}」「$123\ \mathrm{kgm^2/s^3}$」
+    - e.g.「`10\,m`」「`\SI{123}{kgm^2/s^3}`」「`$123\ \mathrm{kgm^2/s^3}$`」
 
 ## Install
 
@@ -56,12 +56,16 @@ textlint --rule use-si-units README.md
 ### Options
 - `allowedUnits`
     - この配列にある文字列には、SI単位系に従っていなくとも警告を出しません
+- `restrictNonSIUnits`
+    - `false` (default): SI併用単位も使用できます
+    - `true`: SI併用単位の使用を禁止し、SIに属する単位のみ認めます
 
 ```json
 {
     "rules": {
         "use-si-units": {
-            "allowedUnits": ["Å"]
+            "allowedUnits": ["Å"],
+            "restrictNonSIUnits": true
         }
     }
 }

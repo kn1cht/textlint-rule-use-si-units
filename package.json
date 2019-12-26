@@ -3,7 +3,7 @@
   "keywords": [
     "textlintrule"
   ],
-  "main": "lib/index.js",
+  "main": "lib/use-si-units.js",
   "files": [
     "lib/",
     "src/"
