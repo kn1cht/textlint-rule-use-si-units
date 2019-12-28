@@ -1,5 +1,8 @@
-# textlint-rule-use-si-units [![](https://github.com/kn1cht/textlint-rule-use-si-units/workflows/CI/badge.svg)](https://github.com/kn1cht/textlint-rule-use-si-units/actions?query=workflow%3ACI)
+# textlint-rule-use-si-units [![](https://github.com/kn1cht/textlint-rule-use-si-units/workflows/CI/badge.svg)](https://github.com/kn1cht/textlint-rule-use-si-units/actions?query=workflow%3ACI) ![npm](https://img.shields.io/npm/v/textlint-rule-use-si-units)
 ## Use SI Units
+
+![sample texts](sample.png)
+
 1. SI単位系の単位以外の使用を禁止します
     - SI単位系は度々改訂されているため、[The International System of Units(SI) 9th edition 2019](https://www.bipm.org/utils/common/pdf/si-brochure/SI-Brochure-9.pdf#page=147)を本ルールの基準とします
     - [JIS Z 8203:2000「国際単位系（SI）及びその使い方」](https://jp.misumi-ec.com/tech-info/categories/technical_data/td01/a0181.html)においても使用法が定められていますが、制定時期の関係で上記の国際文書とは異なる点があります

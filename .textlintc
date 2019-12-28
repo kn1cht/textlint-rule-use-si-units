@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "use-si-units": true,
+  }
+}
