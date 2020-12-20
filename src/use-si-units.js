@@ -12,15 +12,16 @@ const defaultOptions = {
 };
 
 const generateSiUnitParser = (allowedUnits, restrictNonSIUnits) => {
-    const siUnitOneChar = P.oneOf('msAKg');
+    const siUnitOneChar = P.oneOf('-msAKg');
     const siUnitManyChar = P.regexp(/mol|cd/);
+    const allowWordManyChar = P.regexp(/and|or|nor|but|by|for|from|in|on|out|per|to/);
     const siDerivedUnitOneChar = P.oneOf('JWCVFΩSTH℃');
     const siDerivedUnitManyChar = P.regexp(/rad|sr|Hz|N|Pa|Wb|lm|lx|Bq|Gy|Sv|kat/);
     const nonSiUnitOneChar = P.oneOf('hd°′″lLtB');
     const nonSiUnitManyChar = P.regexp(/min|au|ha|Da|eV|Np|dB/);
     const siPrefixOneChar = P.oneOf('YZEPTGMkhdcmμnpfazy');
     const siPrefixManyChar = P.string('da');
-    const concatSymbol = P.oneOf('^-/·･・()');
+    const concatSymbol = P.oneOf('^/·･・()');
 
     // Combine parsers. The longer patterns must come first to avoid confusing patterns with the same prefix.
     let siUnitsManyChar = P.alt(siUnitManyChar, siDerivedUnitManyChar);
