@@ -11,22 +11,22 @@ const defaultOptions = {
     restrictNonSIUnits: false,
 };
 
-const generateSiUnitParser = (allowedUnits, restrictNonSIUnits) => {
-    const siUnitOneChar = P.oneOf('-msAKg');
-    const siUnitManyChar = P.regexp(/mol|cd/);
-    const allowWordManyChar = P.regexp(/and|or|nor|but|by|for|from|in|on|out|per|to/);
-    const siDerivedUnitOneChar = P.oneOf('JWCVFΩSTH℃');
-    const siDerivedUnitManyChar = P.regexp(/rad|sr|Hz|N|Pa|Wb|lm|lx|Bq|Gy|Sv|kat/);
-    const nonSiUnitOneChar = P.oneOf('hd°′″lLtB');
-    const nonSiUnitManyChar = P.regexp(/min|au|ha|Da|eV|Np|dB/);
-    const siPrefixOneChar = P.oneOf('YZEPTGMkhdcmμnpfazy');
-    const siPrefixManyChar = P.string('da');
-    const concatSymbol = P.oneOf('^/·･・()');
+const siUnitOneChar = P.oneOf('-msAKg');
+const siUnitManyChar = P.regexp(/mol|cd/);
+const allowWordManyChar = P.regexp(/and|or|nor|but|by|for|from|on|out|per|to/);
+const siDerivedUnitOneChar = P.oneOf('JWCVFΩSTH℃');
+const siDerivedUnitManyChar = P.regexp(/rad|sr|Hz|N|Pa|Wb|lm|lx|Bq|Gy|Sv|kat/);
+const nonSiUnitOneChar = P.oneOf('hd°′″lLtB');
+const nonSiUnitManyChar = P.regexp(/min|au|ha|Da|eV|Np|dB/);
+const siPrefixOneChar = P.oneOf('YZEPTGMkhcdmμnpfazy');
+const siPrefixManyChar = P.string('da');
+const concatSymbol = P.oneOf('^/·･・()');
 
+const generateSiUnitParser = (allowedUnits, restrictNonSIUnits) => {
     // Combine parsers. The longer patterns must come first to avoid confusing patterns with the same prefix.
     let siUnitsManyChar = P.alt(siUnitManyChar, siDerivedUnitManyChar);
     let siUnitsOneChar = P.alt(siUnitOneChar, siDerivedUnitOneChar);
-    
+
     if(restrictNonSIUnits !== true) {
         siUnitsManyChar = P.alt(siUnitsManyChar, nonSiUnitManyChar);
         siUnitsOneChar = P.alt(siUnitsOneChar, nonSiUnitOneChar);
@@ -35,7 +35,7 @@ const generateSiUnitParser = (allowedUnits, restrictNonSIUnits) => {
         const allowedUnitsString = allowedUnits.reduce((prev, value) => prev === '' ? value : `${prev}|${value}`, '');
         siUnitsManyChar = P.alt(siUnitsManyChar, P.regexp(new RegExp(allowedUnitsString)));
     }
-    const siUnits = P.alt(siUnitsManyChar, siUnitsOneChar);
+    const siUnits = P.alt(siUnitsManyChar, allowWordManyChar, siUnitsOneChar);
     const siSymbols = P.alt(siPrefixManyChar, siPrefixOneChar, concatSymbol);
 
     // Construct an overall parser.
@@ -60,7 +60,8 @@ module.exports = (context, userOptions = {}) => {
             matches.forEach(match => {
                 const siUnitParser = generateSiUnitParser(options.allowedUnits, options.restrictNonSIUnits);
                 const parseResult = siUnitParser.parse(match.text);
-                if(parseResult.status === false) report(
+                const isSymbolOnly = concatSymbol.parse(match.text);
+                if(parseResult.status === false && isSymbolOnly.status === false) report(
                     node,
                     new RuleError(`「${match.text}」には、SI単位系で使用できない文字が含まれています。SI単位系を使用してください。`, {
                         index: match.index,
