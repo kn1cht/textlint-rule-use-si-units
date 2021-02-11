@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "textlint-scripts": "^3.0.0",
-    "textlint-tester": "^5.1.11"
+    "textlint-tester": "^5.3.2"
   },
   "name": "textlint-rule-use-si-units",
   "directories": {
@@ -34,7 +34,7 @@
   "description": "Textlint rule to always use International System of Units (SI).",
   "dependencies": {
     "match-index": "^1.0.3",
-    "parsimmon": "^1.13.0",
+    "parsimmon": "^1.16.0",
     "textlint-rule-helper": "^2.1.1"
   }
 }
