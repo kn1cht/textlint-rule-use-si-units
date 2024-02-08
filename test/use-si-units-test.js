@@ -75,3 +75,10 @@ tester.run('use-si-units with options',
         }
     ]
 });
+
+tester.run('the words end with number', rule, {
+    valid: [
+        '我ら5人合わせて四天王！',
+        'The 5 of us together are the Four Heavenly Kings!'
+    ],
+});

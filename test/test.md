@@ -26,3 +26,9 @@
 ### Invalid
 - 2 d 5 h 0 min 1 s。
 1 or 2
+
+## the words end with number
+
+### Valid
+- 我ら5人合わせて四天王！
+- The 5 of us together are the Four Heavenly Kings!
