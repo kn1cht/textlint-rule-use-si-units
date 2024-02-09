@@ -13,7 +13,7 @@ const defaultOptions = {
 
 const siUnitOneChar = P.oneOf('-msAKg');
 const siUnitManyChar = P.regexp(/mol|cd/);
-const allowWordManyChar = P.regexp(/and|or|nor|but|by|for|from|on|out|per|to/);
+const allowWordManyChar = P.regexp(/and|or|nor|but|by|for|from|on|out|per|to|of|at|over|under|between|among|into|upon|within|around|plus|minus|times|divided/);
 const siDerivedUnitOneChar = P.oneOf('JWCVFΩSTH℃');
 const siDerivedUnitManyChar = P.regexp(/rad|sr|Hz|N|Pa|Wb|lm|lx|Bq|Gy|Sv|kat/);
 const nonSiUnitOneChar = P.oneOf('hd°′″lLtB');
