@@ -14,8 +14,8 @@
     "prepublish": "npm run --if-present build"
   },
   "devDependencies": {
-    "textlint-scripts": "^3.0.0",
-    "textlint-tester": "^5.3.2"
+    "textlint-scripts": "^14.0.1",
+    "textlint-tester": "^14.0.1"
   },
   "name": "textlint-rule-use-si-units",
   "directories": {
