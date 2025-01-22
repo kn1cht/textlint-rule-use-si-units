@@ -79,6 +79,8 @@ tester.run('use-si-units with options',
 tester.run('the words end with number', rule, {
     valid: [
         '我ら5人合わせて四天王！',
-        'The 5 of us together are the Four Heavenly Kings!'
+        'The 5 of us together are the Four Heavenly Kings!',
+        'ある日、5羽のアヒルが丘を越えて遠くへ出かけていった。',
+        '5 little ducks went out one day, over the hill and far away.',
     ],
 });
